@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Car } from '../car-model';
 import { MessageService } from '../message.service';
+import { RentService } from '../rent.service';
 
 @Component({
   selector: 'app-car-details',
@@ -9,7 +10,7 @@ import { MessageService } from '../message.service';
 })
 export class CarDetailsComponent implements OnInit {
   @Input() car:Car;
-  constructor(private messageService: MessageService) { }
+  constructor(public messageService: MessageService, public rentService: RentService) { }
 
   ngOnInit(): void {
   }
@@ -19,6 +20,11 @@ export class CarDetailsComponent implements OnInit {
   }
   clearMessages(){
     this.messageService.clear();
+  }
+
+  rentCar(car:Car):void{
+    this.rentService.rentCar(car);
+    console.log(this.rentService.rentedCars);
   }
 
 }

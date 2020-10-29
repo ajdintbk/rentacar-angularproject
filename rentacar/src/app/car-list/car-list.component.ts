@@ -14,7 +14,7 @@ export class CarListComponent implements OnInit {
   cars:Car[];
   selectedcar:string = 'Mercedes';
   savedCar:Car;
-  constructor(private carService : CarService, private messageService: MessageService) { 
+  constructor(private carService : CarService, public messageService: MessageService) { 
   }
   
   ngOnInit(): void {

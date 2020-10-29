@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Car } from '../car-model';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-car-details',
@@ -6,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./car-details.component.scss']
 })
 export class CarDetailsComponent implements OnInit {
-
-  constructor() { }
+  @Input() car:Car;
+  constructor(private messageService: MessageService) { }
 
   ngOnInit(): void {
+  }
+
+  addMessage(){
+    this.messageService.add("from child");
+  }
+  clearMessages(){
+    this.messageService.clear();
   }
 
 }
